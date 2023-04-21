@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import Header from './components/Header';
+import TodoList from './components/TodoList';
 import './App.css';
 
 function App() {
+
+  const [loading, setLoading] = useState(true)
+  const [itemList, setItemList] = useState()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <h1>Much Todo</h1>
+      <Header 
+        setLoading={setLoading}
+        setItemList={setItemList} />
+      <TodoList
+        loading={loading}
+        itemList={itemList}
+        setLoading={setLoading} 
+        setItemList={setItemList}/>
+    </main>
   );
 }
 
